@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "AirQualityCheck",
+			"path": "../../../../PlatformIO/Projects/AirQualityCheck"
+		}
+	],
+	"settings": {}
+}

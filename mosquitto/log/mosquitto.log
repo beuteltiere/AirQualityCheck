@@ -166,3 +166,112 @@
 1770896323: Client 172.18.0.1 [172.18.0.1:50948] disconnected: bad socket read/write: Unknown error
 1770896338: mosquitto version 2.1.2 terminating
 1770896338: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1772704817: mosquitto version 2.1.2 starting
+1772704817: Config loaded from /mosquitto/config/mosquitto.conf.
+1772704817: Bridge support available.
+1772704817: Persistence support available.
+1772704817: TLS support available.
+1772704817: TLS-PSK support available.
+1772704817: Websockets support available.
+1772704817: Opening ipv4 listen socket on port 1883.
+1772704817: Opening ipv6 listen socket on port 1883.
+1772704817: Opening ipv4 listen socket on port 9001.
+1772704817: Opening ipv6 listen socket on port 9001.
+1772704817: mosquitto version 2.1.2 running
+1772704837: New connection from 172.18.0.1:40604 on port 1883.
+1772704837: New client connected from 172.18.0.1:40604 as ESP32_DHT_Sensor (p4, c1, k15).
+1772705097: New connection from 172.18.0.1:39154 on port 1883.
+1772705097: New client connected from 172.18.0.1:39154 as mqtt-explorer-0b8b50ce (p4, c1, k60).
+1772705175: Client ESP32_DHT_Sensor [172.18.0.1:40604] disconnected: exceeded timeout.
+1772705201: New connection from 172.18.0.1:47134 on port 1883.
+1772705201: New client connected from 172.18.0.1:47134 as ESP32_DHT_Sensor (p4, c1, k15).
+1772705212: New connection from 172.18.0.1:35476 on port 1883.
+1772705212: Client ESP32_DHT_Sensor [172.18.0.1:47134] disconnected: session taken over.
+1772705212: New client connected from 172.18.0.1:35476 as ESP32_DHT_Sensor (p4, c1, k15).
+1772705235: Client ESP32_DHT_Sensor [172.18.0.1:35476] disconnected: exceeded timeout.
+1772705245: New connection from 172.18.0.1:47356 on port 1883.
+1772705245: New client connected from 172.18.0.1:47356 as ESP32_DHT_Sensor (p4, c1, k15).
+1772705296: New connection from 172.18.0.1:53646 on port 1883.
+1772705296: Client ESP32_DHT_Sensor [172.18.0.1:47356] disconnected: session taken over.
+1772705296: New client connected from 172.18.0.1:53646 as ESP32_DHT_Sensor (p4, c1, k15).
+1772705588: Client ESP32_DHT_Sensor [172.18.0.1:53646] disconnected: exceeded timeout.
+1772705597: New connection from 172.18.0.1:40852 on port 1883.
+1772705597: New client connected from 172.18.0.1:40852 as ESP32_DHT_Sensor (p4, c1, k15).
+1772705637: Client ESP32_DHT_Sensor [172.18.0.1:40852] disconnected: exceeded timeout.
+1772705649: Client mqtt-explorer-0b8b50ce [172.18.0.1:39154] disconnected.
+1772705660: New connection from 172.18.0.1:53772 on port 1883.
+1772705660: New client connected from 172.18.0.1:53772 as mqtt-explorer-0b8b50ce (p4, c1, k60).
+1772705672: New connection from 172.18.0.1:42634 on port 1883.
+1772705672: New client connected from 172.18.0.1:42634 as ESP32_DHT_Sensor (p4, c1, k15).
+1772705996: Client ESP32_DHT_Sensor [172.18.0.1:42634] disconnected: exceeded timeout.
+1772705997: New connection from 172.18.0.1:60330 on port 1883.
+1772705997: New client connected from 172.18.0.1:60330 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706097: New connection from 172.18.0.1:48642 on port 1883.
+1772706097: Client ESP32_DHT_Sensor [172.18.0.1:60330] disconnected: session taken over.
+1772706097: New client connected from 172.18.0.1:48642 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706123: New connection from 172.18.0.1:35956 on port 1883.
+1772706123: Client ESP32_DHT_Sensor [172.18.0.1:48642] disconnected: session taken over.
+1772706123: New client connected from 172.18.0.1:35956 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706145: Client ESP32_DHT_Sensor [172.18.0.1:35956] disconnected: exceeded timeout.
+1772706150: New connection from 172.18.0.1:57786 on port 1883.
+1772706150: New client connected from 172.18.0.1:57786 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706163: New connection from 172.18.0.1:58114 on port 1883.
+1772706163: Client ESP32_DHT_Sensor [172.18.0.1:57786] disconnected: session taken over.
+1772706163: New client connected from 172.18.0.1:58114 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706178: Client ESP32_DHT_Sensor [172.18.0.1:58114] disconnected: connection closed by client.
+1772706178: New connection from 172.18.0.1:57964 on port 1883.
+1772706178: New client connected from 172.18.0.1:57964 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706203: Client ESP32_DHT_Sensor [172.18.0.1:57964] disconnected: connection closed by client.
+1772706205: New connection from 172.18.0.1:43710 on port 1883.
+1772706205: New client connected from 172.18.0.1:43710 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706267: New connection from 172.18.0.1:55198 on port 1883.
+1772706267: Client ESP32_DHT_Sensor [172.18.0.1:43710] disconnected: session taken over.
+1772706267: New client connected from 172.18.0.1:55198 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706285: New connection from 172.18.0.1:35272 on port 1883.
+1772706285: Client ESP32_DHT_Sensor [172.18.0.1:55198] disconnected: session taken over.
+1772706285: New client connected from 172.18.0.1:35272 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706302: New connection from 172.18.0.1:42350 on port 1883.
+1772706302: Client ESP32_DHT_Sensor [172.18.0.1:35272] disconnected: session taken over.
+1772706302: New client connected from 172.18.0.1:42350 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706330: New connection from 172.18.0.1:34286 on port 1883.
+1772706330: Client ESP32_DHT_Sensor [172.18.0.1:42350] disconnected: session taken over.
+1772706330: New client connected from 172.18.0.1:34286 as ESP32_DHT_Sensor (p4, c1, k15).
+1772706361: Client ESP32_DHT_Sensor [172.18.0.1:34286] disconnected: exceeded timeout.
+1772706617: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1772707360: New connection from 172.18.0.1:60470 on port 1883.
+1772707360: New client connected from 172.18.0.1:60470 as ESP32_DHT_Sensor (p4, c1, k15).
+1772707408: New connection from 172.18.0.1:52650 on port 1883.
+1772707408: Client ESP32_DHT_Sensor [172.18.0.1:60470] disconnected: session taken over.
+1772707408: New client connected from 172.18.0.1:52650 as ESP32_DHT_Sensor (p4, c1, k15).
+1772707429: Client ESP32_DHT_Sensor [172.18.0.1:52650] disconnected: connection closed by client.
+1772707429: New connection from 172.18.0.1:36316 on port 1883.
+1772707429: New client connected from 172.18.0.1:36316 as ESP32_DHT_Sensor (p4, c1, k15).
+1772707452: New connection from 172.18.0.1:47936 on port 1883.
+1772707452: Client ESP32_DHT_Sensor [172.18.0.1:36316] disconnected: session taken over.
+1772707452: New client connected from 172.18.0.1:47936 as ESP32_DHT_Sensor (p4, c1, k15).
+1772707524: New connection from 172.18.0.1:53078 on port 1883.
+1772707524: Client ESP32_DHT_Sensor [172.18.0.1:47936] disconnected: session taken over.
+1772707524: New client connected from 172.18.0.1:53078 as ESP32_DHT_Sensor (p4, c1, k15).
+1772707554: Client mqtt-explorer-0b8b50ce [172.18.0.1:53772] disconnected.
+1772707556: New connection from 172.18.0.1:52818 on port 1883.
+1772707556: New client connected from 172.18.0.1:52818 as mqtt-explorer-0b8b50ce (p4, c1, k60).
+1772707637: Client ESP32_DHT_Sensor [172.18.0.1:53078] disconnected: exceeded timeout.
+1772707652: New connection from 172.18.0.1:48676 on port 1883.
+1772707652: New client connected from 172.18.0.1:48676 as ESP32_DHT_Sensor (p4, c1, k15).
+1772707689: Client ESP32_DHT_Sensor [172.18.0.1:48676] disconnected: exceeded timeout.
+1772707730: New connection from 172.18.0.1:49414 on port 1883.
+1772707730: New client connected from 172.18.0.1:49414 as ESP32_DHT_Sensor (p4, c1, k15).
+1772708068: Client ESP32_DHT_Sensor [172.18.0.1:49414] disconnected: exceeded timeout.
+1772708418: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1772708431: New connection from 172.18.0.1:52466 on port 1883.
+1772708431: New client connected from 172.18.0.1:52466 as ESP32_DHT_Sensor (p4, c1, k15).
+1772708469: Client ESP32_DHT_Sensor [172.18.0.1:52466] disconnected: exceeded timeout.
+1772708471: New connection from 172.18.0.1:46108 on port 1883.
+1772708471: New client connected from 172.18.0.1:46108 as ESP32_DHT_Sensor (p4, c1, k15).
+1772708842: Client ESP32_DHT_Sensor [172.18.0.1:46108] disconnected: exceeded timeout.
+1772710219: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1772711023: New connection from 172.18.0.1:34028 on port 1883.
+1772711023: New client connected from 172.18.0.1:34028 as ESP32_DHT_Sensor (p4, c1, k15).
+1772711061: Client ESP32_DHT_Sensor [172.18.0.1:34028] disconnected: exceeded timeout.
+1772711073: New connection from 172.18.0.1:56048 on port 1883.
+1772711073: New client connected from 172.18.0.1:56048 as ESP32_DHT_Sensor (p4, c1, k15).
