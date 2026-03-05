@@ -1,24 +1,25 @@
-import os
+from collections.abc import Generator
+from typing import Annotated
 from sqlalchemy import create_engine
-from sqlalchemy.engine import URL
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, Session, declarative_base
+from fastapi import Depends
+from app.core.config import settings
 
-database_url = os.getenv("DATABASE_URL")
+engine = create_engine(
+    settings.SQLALCHEMY_DATABASE_URI,
+    future=True,
+    pool_pre_ping=True
+)
 
-if database_url:
-    engine = create_engine(database_url, pool_pre_ping=True)
-else:
-    url = URL.create(
-        drivername="postgresql+psycopg",
-        username="postgres",
-        password="postgres",
-        host="localhost",
-        database="airqualitycheck",
-        port=5432,
-    )
-    engine = create_engine(url, pool_pre_ping=True)
-
-Session = sessionmaker(bind=engine)
-session = Session()
 Base = declarative_base()
+
+SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False, class_=Session, future=True)
+
+def get_db() -> Generator[Session, None, None]:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+SessionDep = Annotated[Session, Depends(get_db)]
