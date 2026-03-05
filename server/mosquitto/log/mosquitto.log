@@ -166,3 +166,15 @@
 1770896323: Client 172.18.0.1 [172.18.0.1:50948] disconnected: bad socket read/write: Unknown error
 1770896338: mosquitto version 2.1.2 terminating
 1770896338: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1772703050: mosquitto version 2.1.2 starting
+1772703050: Config loaded from /mosquitto/config/mosquitto.conf.
+1772703050: Bridge support available.
+1772703050: Persistence support available.
+1772703050: TLS support available.
+1772703050: TLS-PSK support available.
+1772703050: Websockets support available.
+1772703050: Opening ipv4 listen socket on port 1883.
+1772703050: Opening ipv6 listen socket on port 1883.
+1772703050: Opening ipv4 listen socket on port 9001.
+1772703050: Opening ipv6 listen socket on port 9001.
+1772703050: mosquitto version 2.1.2 running
