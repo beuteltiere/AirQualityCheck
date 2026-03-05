@@ -275,3 +275,4 @@
 1772711061: Client ESP32_DHT_Sensor [172.18.0.1:34028] disconnected: exceeded timeout.
 1772711073: New connection from 172.18.0.1:56048 on port 1883.
 1772711073: New client connected from 172.18.0.1:56048 as ESP32_DHT_Sensor (p4, c1, k15).
+1772711458: Client ESP32_DHT_Sensor [172.18.0.1:56048] disconnected: exceeded timeout.
