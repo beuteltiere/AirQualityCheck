@@ -6,8 +6,8 @@ from app.database.session import Base, engine
 from app.api.main import api_router
 from app.models.motor import Motor # noqa: F401
 from app.models.motor_activity import MotorActivity # noqa: F401
-from app.models.sensor import Sensor # noqa: F401
 from app.models.sensor_activity import SensorActivity # noqa: F401
+from app.models.sensor import Sensor # noqa: F401
 from app.models.external_weather_source import ExternalWeatherSource # noqa: F401
 from app.models.external_weather_activity import ExternalWeatherActivity  # noqa: F401
 

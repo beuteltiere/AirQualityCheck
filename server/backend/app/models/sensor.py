@@ -14,4 +14,4 @@ class Sensor(Base):
     name = Column(Text, nullable=False)
     is_active = Column(Boolean, default=True)
 
-    Activity = relationship("Sensoractivity", back_populates="sensor", cascade="all, delete-orphan")
+    activity = relationship("SensorActivity", back_populates="sensor", cascade="all, delete-orphan")

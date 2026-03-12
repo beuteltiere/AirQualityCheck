@@ -335,3 +335,30 @@
 1772710710: Opening ipv4 listen socket on port 9001.
 1772710710: Opening ipv6 listen socket on port 9001.
 1772710710: mosquitto version 2.1.2 running
+1773306584: mosquitto version 2.1.2 starting
+1773306584: Config loaded from /mosquitto/config/mosquitto.conf.
+1773306584: Bridge support available.
+1773306584: Persistence support available.
+1773306584: TLS support available.
+1773306584: TLS-PSK support available.
+1773306584: Websockets support available.
+1773306584: Opening ipv4 listen socket on port 1883.
+1773306584: Opening ipv6 listen socket on port 1883.
+1773306584: Opening ipv4 listen socket on port 9001.
+1773306584: Opening ipv6 listen socket on port 9001.
+1773306584: mosquitto version 2.1.2 running
+1773308386: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1773308787: mosquitto version 2.1.2 terminating
+1773308787: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1773308825: mosquitto version 2.1.2 starting
+1773308825: Config loaded from /mosquitto/config/mosquitto.conf.
+1773308825: Bridge support available.
+1773308825: Persistence support available.
+1773308825: TLS support available.
+1773308825: TLS-PSK support available.
+1773308825: Websockets support available.
+1773308825: Opening ipv4 listen socket on port 1883.
+1773308825: Opening ipv6 listen socket on port 1883.
+1773308825: Opening ipv4 listen socket on port 9001.
+1773308825: Opening ipv6 listen socket on port 9001.
+1773308825: mosquitto version 2.1.2 running
