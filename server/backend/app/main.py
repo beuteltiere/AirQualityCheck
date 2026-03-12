@@ -3,6 +3,8 @@ from fastapi.routing import APIRoute
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.database.session import Base, engine
+from contextlib import asynccontextmanager
+from app.core.scheduler import start_scheduler, scheduler
 from app.api.main import api_router
 from app.models.motor import Motor # noqa: F401
 from app.models.motor_activity import MotorActivity # noqa: F401
@@ -14,9 +16,16 @@ from app.models.external_weather_activity import ExternalWeatherActivity  # noqa
 def cstm_generate_unique_id(route: APIRoute) -> str:
   return f"{route.tags[0]}-{route.name}"
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    start_scheduler()
+    yield
+    scheduler.shutdown()
+
 app = FastAPI(title=settings.PROJECT_NAME, 
               openapi_url=f"{settings.API_V1_STR}/openapi.json", 
-              generate_unique_id_function=cstm_generate_unique_id)
+              generate_unique_id_function=cstm_generate_unique_id,
+              lifespan=lifespan)
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 

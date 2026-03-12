@@ -362,3 +362,20 @@
 1773308825: Opening ipv4 listen socket on port 9001.
 1773308825: Opening ipv6 listen socket on port 9001.
 1773308825: mosquitto version 2.1.2 running
+1773314556: mosquitto version 2.1.2 starting
+1773314556: Config loaded from /mosquitto/config/mosquitto.conf.
+1773314556: Bridge support available.
+1773314556: Persistence support available.
+1773314556: TLS support available.
+1773314556: TLS-PSK support available.
+1773314556: Websockets support available.
+1773314556: Opening ipv4 listen socket on port 1883.
+1773314556: Opening ipv6 listen socket on port 1883.
+1773314556: Opening ipv4 listen socket on port 9001.
+1773314556: Opening ipv6 listen socket on port 9001.
+1773314556: mosquitto version 2.1.2 running
+1773314563: New connection from 172.21.0.1:47538 on port 1883.
+1773314563: New client connected from 172.21.0.1:47538 as ESP32_DHT_Sensor (p4, c1, k15).
+1773314643: New connection from 172.21.0.1:50446 on port 1883.
+1773314643: New client connected from 172.21.0.1:50446 as mqtt-explorer-c41ab101 (p4, c1, k60).
+1773314722: Client ESP32_DHT_Sensor [172.21.0.1:47538] disconnected: exceeded timeout.

@@ -16,12 +16,12 @@ def update_external_weather_source(db: SessionDep, external_weather_source_id: i
     return external_weather_source
 
 @router.delete("/{external_weather_source_id}", response_model=ExternalWeatherSourceResponse)
-def delete_external_weather_source(external_weather_source_id: int, db: SessionDep):
+def delete_external_weather_source(db: SessionDep, external_weather_source_id: int):
     external_weather_source = crud.delete_external_weather_source(db=db, external_weather_source_id=external_weather_source_id)
     return external_weather_source
 
 @router.get("/{external_weather_source_id}", response_model=ExternalWeatherSourceResponse)
-def get_external_weather_source(external_weather_source_id: int, db: SessionDep):
+def get_external_weather_source(db: SessionDep, external_weather_source_id: int):
     external_weather_source = crud.get_external_weather_source(db=db, external_weather_source_id=external_weather_source_id)
     return external_weather_source
 
