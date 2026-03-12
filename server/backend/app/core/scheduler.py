@@ -7,7 +7,7 @@ scheduler = AsyncIOScheduler()
 def start_scheduler():
     scheduler.add_job(
         fetch_weather_for_all_sources,
-        trigger=IntervalTrigger(minutes=1),
+        trigger=IntervalTrigger(hours=1),
         id="fetch_weather",
         replace_existing=True,
     )
