@@ -1,3 +1,4 @@
+import json
 from datetime import datetime, timezone
 from aiomqtt import Client
 from app.database.session import SessionLocal
@@ -113,7 +114,8 @@ async def handle_motor_message(message):
 
 
 async def publish_motor_command(degrees: int):
-    topic = f"{MOTOR_COMMAND_TOPIC_PREFIX}/{degrees}"
+    topic = MOTOR_COMMAND_TOPIC_PREFIX
+    payload = f"rotate:{degrees}"
     async with Client(MQTT_HOST) as client:
-        await client.publish(topic, str(degrees))
-    print(f"MQTT motor: published command {topic}")
+        await client.publish(topic, payload)
+    print(f"MQTT motor: published command {topic} payload={payload}")
