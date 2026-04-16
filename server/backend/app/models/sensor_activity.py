@@ -20,4 +20,3 @@ class SensorActivity(Base):
     humidity = Column(Float)
 
     sensor = relationship("Sensor", back_populates="activity")
-    motor_activities = relationship("MotorActivity", back_populates="sensor_activity")

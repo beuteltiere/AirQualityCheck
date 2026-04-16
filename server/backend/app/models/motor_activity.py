@@ -22,9 +22,5 @@ class MotorActivity(Base):
     motor_id = Column(Integer, ForeignKey("motors.id", ondelete="CASCADE"), nullable=False)
     event_type = Column(Enum(MotorEventType, name="motor_event_type"), nullable=False)
     occurred_at = Column(DateTime, nullable=False, default=datetime.now(timezone.utc))
-    sensor_activity_id = Column(BigInteger, ForeignKey("sensor_activity.id", ondelete="SET NULL"))
-    ext_weather_activity_id = Column(BigInteger, ForeignKey("external_weather_activity.id", ondelete="SET NULL"))
 
     motor = relationship("Motor", back_populates="activities")
-    sensor_activity = relationship("SensorActivity", back_populates="motor_activities")
-    ext_weather_activity = relationship("ExternalWeatherActivity", back_populates="motor_activities")
