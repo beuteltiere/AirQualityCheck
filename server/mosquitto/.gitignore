@@ -1,0 +1,9 @@
+# Keep runtime directories in Git via placeholders
+data/*
+!data/.gitkeep
+log/*
+!log/.gitkeep
+
+# Ignore Mosquitto runtime artifacts
+*.log
+*.db
