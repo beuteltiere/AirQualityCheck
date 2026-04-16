@@ -35,10 +35,10 @@ def get_motors(db: SessionDep):
 @router.post("/command/360")
 async def publish_motor_command_360():
     await publish_motor_command(360)
-    return {"topic": "home/sensor/motor/command/360", "payload": "360"}
+    return {"topic": "home/sensor/motor/command", "payload": {"rotate": 360}}
 
 
 @router.post("/command/-360")
 async def publish_motor_command_minus_360():
     await publish_motor_command(-360)
-    return {"topic": "home/sensor/motor/command/-360", "payload": "-360"}
+    return {"topic": "home/sensor/motor/command", "payload": {"rotate": -360}}

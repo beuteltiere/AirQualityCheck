@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -51,17 +51,21 @@ export default function ActivityPage() {
   const [loading, setLoading] = useState(false);
   const [lastFetched, setLastFetched] = useState<string | null>(null);
 
+  const isFetchingRef = useRef(false);
+
   const fetchAll = useCallback(async () => {
+    if (isFetchingRef.current) return;
+
+    isFetchingRef.current = true;
     setLoading(true);
 
     const now = new Date();
     const todayStart = new Date();
     todayStart.setHours(0, 0, 0, 0);
 
-    const startDate = todayStart.toISOString();
-    const endDate = now.toISOString();
-
-    const params = `start=${encodeURIComponent(startDate)}&end=${encodeURIComponent(endDate)}`;
+    const params = `start=${encodeURIComponent(
+      todayStart.toISOString()
+    )}&end=${encodeURIComponent(now.toISOString())}`;
 
     try {
       const [s, m, w] = await Promise.all([
@@ -72,32 +76,44 @@ export default function ActivityPage() {
         ),
       ]);
 
-      setSensorData(Array.isArray(s) ? s : []);
-      setMotorData(Array.isArray(m) ? m : []);
-      setWeatherData(Array.isArray(w) ? w : []);
+      const sortDesc = (arr: any[], key: string) =>
+        (arr ?? []).sort(
+          (a, b) =>
+            new Date(b[key]).getTime() - new Date(a[key]).getTime()
+        );
+
+      setSensorData(sortDesc(s, "recorded_at"));
+      setMotorData(sortDesc(m, "occurred_at"));
+      setWeatherData(sortDesc(w, "fetched_at"));
 
       setLastFetched(new Date().toLocaleTimeString());
     } catch (e) {
       console.error(e);
     } finally {
       setLoading(false);
+      isFetchingRef.current = false;
     }
   }, []);
 
-  // Initial load
+  const sendCommand = async (value: 360 | -360) => {
+    try {
+      await fetch(`${API_BASE}/motor/command/${value}`, {
+        method: "POST",
+      });
+      setTimeout(fetchAll, 500);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
     fetchAll();
   }, [fetchAll]);
 
-  // Auto-refresh every 15s (no overlap)
   useEffect(() => {
-    let isFetching = false;
-
     const interval = setInterval(async () => {
-      if (isFetching) return;
-      isFetching = true;
+      if (isFetchingRef.current) return;
       await fetchAll();
-      isFetching = false;
     }, 15000);
 
     return () => clearInterval(interval);
@@ -105,7 +121,6 @@ export default function ActivityPage() {
 
   return (
     <div className="p-6 space-y-6">
-      {/* HEADER */}
       <div className="flex items-end justify-between">
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">
@@ -116,12 +131,23 @@ export default function ActivityPage() {
           </p>
         </div>
 
-        <Button onClick={fetchAll} disabled={loading}>
-          {loading ? "Loading…" : "Refresh"}
-        </Button>
+        <div className="flex gap-2">
+          <Button type="button" onClick={() => sendCommand(360)}>
+            Open
+          </Button>
+          <Button
+            type="button"
+            onClick={() => sendCommand(-360)}
+            variant="secondary"
+          >
+            Close
+          </Button>
+          <Button type="button" onClick={fetchAll} disabled={loading}>
+            {loading ? "Loading…" : "Refresh"}
+          </Button>
+        </div>
       </div>
 
-      {/* STATUS */}
       <div className="flex gap-6 text-xs text-muted-foreground border-b pb-2">
         <span>Sensor <b>{sensorData.length}</b></span>
         <span>Motor <b>{motorData.length}</b></span>
@@ -134,9 +160,7 @@ export default function ActivityPage() {
         )}
       </div>
 
-      {/* GRID */}
       <div className="grid md:grid-cols-3 gap-4 h-[70vh]">
-        {/* SENSOR */}
         <ActivityColumn
           title="Sensor Activity"
           data={sensorData}
@@ -151,33 +175,8 @@ export default function ActivityPage() {
               <span>{row.humidity.toFixed(1)}%</span>
             </div>
           )}
-          meta={
-            sensorData.length > 0 && (
-              <>
-                <Stat
-                  label="Avg Temp"
-                  value={
-                    (
-                      sensorData.reduce((a, b) => a + b.temperature, 0) /
-                      sensorData.length
-                    ).toFixed(1) + "°"
-                  }
-                />
-                <Stat
-                  label="Avg Hum"
-                  value={
-                    (
-                      sensorData.reduce((a, b) => a + b.humidity, 0) /
-                      sensorData.length
-                    ).toFixed(1) + "%"
-                  }
-                />
-              </>
-            )
-          }
         />
 
-        {/* MOTOR */}
         <ActivityColumn
           title="Motor Activity"
           data={motorData}
@@ -191,25 +190,8 @@ export default function ActivityPage() {
               <span className="font-medium">{row.event_type}</span>
             </div>
           )}
-          meta={
-            motorData.length > 0 && (
-              <>
-                <Stat
-                  label="Opens"
-                  value={motorData.filter((m) => m.event_type === "OPEN").length}
-                />
-                <Stat
-                  label="Closes"
-                  value={
-                    motorData.filter((m) => m.event_type === "CLOSE").length
-                  }
-                />
-              </>
-            )
-          }
         />
 
-        {/* WEATHER */}
         <ActivityColumn
           title="External Weather"
           data={weatherData}
@@ -224,37 +206,11 @@ export default function ActivityPage() {
               <span>{row.humidity.toFixed(1)}%</span>
             </div>
           )}
-          meta={
-            weatherData.length > 0 && (
-              <>
-                <Stat
-                  label="Avg Temp"
-                  value={
-                    (
-                      weatherData.reduce((a, b) => a + b.temperature, 0) /
-                      weatherData.length
-                    ).toFixed(1) + "°"
-                  }
-                />
-                <Stat
-                  label="Avg Hum"
-                  value={
-                    (
-                      weatherData.reduce((a, b) => a + b.humidity, 0) /
-                      weatherData.length
-                    ).toFixed(1) + "%"
-                  }
-                />
-              </>
-            )
-          }
         />
       </div>
     </div>
   );
 }
-
-/* ---------- REUSABLE COMPONENTS ---------- */
 
 function ActivityColumn({
   title,
@@ -262,24 +218,20 @@ function ActivityColumn({
   loading,
   renderRow,
   getDate,
-  meta,
 }: {
   title: string;
   data: Array<{ id: number }>;
   loading: boolean;
   renderRow: (row: any) => React.ReactNode;
   getDate: (row: any) => string;
-  meta?: React.ReactNode;
 }) {
   return (
     <Card className="flex flex-col h-full">
-      <CardHeader className="space-y-2">
+      <CardHeader>
         <div className="flex justify-between text-sm font-medium">
           <span>{title}</span>
           <span className="text-muted-foreground">{data.length} rows</span>
         </div>
-
-        {meta && <div className="flex gap-4">{meta}</div>}
       </CardHeader>
 
       <CardContent className="flex-1 overflow-hidden p-0">
@@ -316,20 +268,5 @@ function ActivityColumn({
         </ScrollArea>
       </CardContent>
     </Card>
-  );
-}
-
-function Stat({
-  label,
-  value,
-}: {
-  label: string;
-  value: React.ReactNode;
-}) {
-  return (
-    <div className="text-xs">
-      <div className="text-muted-foreground">{label}</div>
-      <div className="text-lg font-semibold">{value}</div>
-    </div>
   );
 }
