@@ -17,12 +17,16 @@ Docker.env
 - gettet von Wetter API Daten von outside
 - sound wenn sachen machen
 - Frontend mit Webinterface mit Datenanzeige
-
-Al 
-- motor steuern
-- trends vorhersagen
-
 ```
 
+Motor Commands
 
+start
+stop
+steps:N
+rotate:N
+
+home/sensor/motor/command
+rotate:360
+rotate:-360
 
