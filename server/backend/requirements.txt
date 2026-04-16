@@ -10,3 +10,4 @@ sqlalchemy
 psycopg
 apscheduler
 asyncio
+aiomqtt

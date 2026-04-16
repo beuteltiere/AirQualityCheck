@@ -6,6 +6,8 @@ from app.database.session import Base, engine
 from contextlib import asynccontextmanager
 from app.core.scheduler import start_scheduler, scheduler
 from app.api.main import api_router
+import asyncio
+from app.core.mqtt import start_mqtt
 from app.models.motor import Motor # noqa: F401
 from app.models.motor_activity import MotorActivity # noqa: F401
 from app.models.sensor_activity import SensorActivity # noqa: F401
@@ -19,6 +21,7 @@ def cstm_generate_unique_id(route: APIRoute) -> str:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     start_scheduler()
+    asyncio.create_task(start_mqtt())
     yield
     scheduler.shutdown()
 

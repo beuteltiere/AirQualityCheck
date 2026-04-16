@@ -20,4 +20,3 @@ class ExternalWeatherActivity(Base):
     humidity = Column(Float)
 
     source = relationship("ExternalWeatherSource", back_populates="activity")
-    motor_activities = relationship("MotorActivity", back_populates="ext_weather_activity")
